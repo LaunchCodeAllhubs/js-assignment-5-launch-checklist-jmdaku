@@ -17,46 +17,74 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 }
 
 function validateInput(testInput) {
-        let form = document.querySelector("form");
-        form.addEventListener("submit", function(event) {
-            if(){
-                
+    if(testInput === ""){
+        return "Empty";    
+    }
+    else if(isNaN(testInput)){
+        return "Not a Number";
+    }
+    else if(!isNaN){
+        return "Is a Number";
+    }
+}
+
+    
+  function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
+        //list?
+        if(validateInput(fuelLevel || pilot || copilot || cargoLevel) === "Empty"){
+            alert("Please complete all fields.");
+        }
+        else if(validateInput(fuelLevel || cargoLevel) === "Not a Number"){
+            alert("Please enter a number.");
+        }
+        else if(validateInput(pilot || copilot)  === "Is a Number"){
+            alert("Please enter a name.");
+        }
+        else if (validateInput(fuelLevel) === "Is a Number"){
+            //both fail
+            if(fuelLevel < 10000 && cargoLevel > 10000){
+               document.getElementById(faultyItems) = visible;
+               fuelStatus.innerHTML = "Fuel level too low for launch";
+               cargoLevel.innerHTML = "Cargo mass too heavy for launch"; 
+               document.getElementById(launchStatus) = "Shuttle Not Ready for Launch"; 
+               //document.getElementById(launchStatus) = color: #C7254E 
             }
-           alert("submit clicked");
-       
-     });
-   
-}
-
-//validateInput() should take in a string as a parameter and return "Empty", "Not a Number", or "Is a Number" as appropriate. 
-
-//submitButton.addEventListener("click", (event) => {    
-    
-    //const typeInput = document.querySelector("input[name=type-input]:checked");
-   
-    //if (typeInput === null) {
-        //alert("Please complete all fields.");
-    //} else if (keywordInput.value !== "" && !keywordInput.value.trim().match(/^[A-Za-z0-9\-]+$/)) {
-        //alert("\nPlease enter a single keyword with only letters and/or numbers.");
-    //} else {
-       
-        //handleSubmitClick(typeInput);
-    //}
-    
-    //event.preventDefault();
-//});
-
-
-
-
-
-
-
+            // 1st fail
+            else if(fuelLevel < 10000 && cargoLevel <= 10000){
+                document.getElementById(faultyItems) = visible;
+                fuelStatus.innerHTML = "Fuel level too low for launch";
+                cargoLevel.innerHTML = "Cargo mass low enough for launch";
+                document.getElementById(launchStatus) = "Shuttle Not Ready for Launch"
+               //document.getElementById(launchStatus) = color: #C7254E  
+            }
+            //2nd fail
+            else if(fuelLevel >=10000 && cargoLevel > 10000){
+                document.getElementById(faultyItems) = visible;
+                fuelStatus.innerHTML = "Fuel level high enough for launch";
+                cargoLevel.innerHTML = "Cargo mass too heavy for launch";
+                document.getElementById(launchStatus) = "Shuttle Not Ready for Launch"
+               //document.getElementById(launchStatus) = color: #C7254E    
+            } 
+            //both pass
+            else if(fuelLevel >=10000 && cargoLevel <= 10000){
+                document.getElementById(faultyItems) = hidden;
+                fuelStatus.innerHTML = "Fuel level high enough for launch";
+                cargoLevel.innerHTML = "Cargo mass low enough for launch";
+                document.getElementById(launchStatus) = "Shuttle Is Ready for Launch"
+               //document.getElementById(launchStatus) = color: #419F6A   
+            }    
+        } 
+     document.getElementById(pilotStatus) = `Pilot ${pilot} is ready for launch`;
+     document.getElementById(copilotStatus) = `Copilot ${copilot} is ready for launch`; 
+     };
 
 
-function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
-   
-}
+form.addEventListener("submit", function(event){
+    formSubmission()
+    event.preventDefault(); 
+});
+// Maybe not the right spot
+
 
 async function myFetch() {
     let planetsReturned;
