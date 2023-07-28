@@ -17,8 +17,42 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 }
 
 function validateInput(testInput) {
+        let form = document.querySelector("form");
+        form.addEventListener("submit", function(event) {
+            if(){
+                
+            }
+           alert("submit clicked");
+       
+     });
    
 }
+
+//validateInput() should take in a string as a parameter and return "Empty", "Not a Number", or "Is a Number" as appropriate. 
+
+//submitButton.addEventListener("click", (event) => {    
+    
+    //const typeInput = document.querySelector("input[name=type-input]:checked");
+   
+    //if (typeInput === null) {
+        //alert("Please complete all fields.");
+    //} else if (keywordInput.value !== "" && !keywordInput.value.trim().match(/^[A-Za-z0-9\-]+$/)) {
+        //alert("\nPlease enter a single keyword with only letters and/or numbers.");
+    //} else {
+       
+        //handleSubmitClick(typeInput);
+    //}
+    
+    //event.preventDefault();
+//});
+
+
+
+
+
+
+
+
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
    
