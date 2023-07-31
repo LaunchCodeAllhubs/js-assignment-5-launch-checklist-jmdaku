@@ -6,6 +6,8 @@ const { myFetch , addDestinationInfo } = require("./scriptHelper");
 
 window.addEventListener("load", function() {
 
+    debugger;
+
     let listedPlanets;
     // Set listedPlanetsResponse equal to the value returned by calling myFetch()
     let listedPlanetsResponse = myFetch();
@@ -25,10 +27,9 @@ window.addEventListener("load", function() {
         let imageUrl = planet.image;     
         
         addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl);
-       
-        
+           
     });
-})
+
  
 let list;
 let pilot = document.getElementById(pilotName).value;
@@ -38,7 +39,9 @@ let cargoLevel = document.getElementById(cargoLevel).value;
 
 
 form.addEventListener("submit", function(event){
+    event.preventDefault();
     formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel);
 
-    event.preventDefault();
+    
 });
+})

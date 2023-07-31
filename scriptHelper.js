@@ -1,8 +1,16 @@
 
 require('isomorphic-fetch');
 
+// let pilotStatus = document.getElementById(pilotStatus);
+// let copilotStatus = document.getElementById(copilotStatus);
+// let launchStatus = document.getElementById(launchStatus);
+// let fuelStatus = document.getElementById(fuelStatus);
+// let cargoStatus = document.getElementById(cargoStatus);
+// let list = document.getElementById(faultyItems);
+
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
    // Here is the HTML formatting for our mission target div.
+        //let missionTarget = document.getElementById(missionTarget);
         document.missionTarget.innerHTML = `
                 <h2>Mission Destination</h2>
                 <ol>
@@ -28,17 +36,16 @@ function validateInput(testInput) {
     }
 }
 
-  
 
   function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
-        //list?
-        let pilotStatus = document.getElementById(pilotStatus);
-        let copilotStatus = document.getElementById(copilotStatus);
-        let launchStatus = document.getElementById(launchStatus);
-        let fuelStatus = document.getElementById(fuelStatus);
-        let cargoStatus = document.getElementById(cargoStatus);
-        let faultyItems = document.getElementById(faultyItems);
-    
+    let pilotStatus = document.getElementById(pilotStatus);
+    let copilotStatus = document.getElementById(copilotStatus);
+    let launchStatus = document.getElementById(launchStatus);
+    let fuelStatus = document.getElementById(fuelStatus);
+    let cargoStatus = document.getElementById(cargoStatus);
+    let list = document.getElementById(faultyItems);   
+
+
         //any fields blank
         if(validateInput(fuelLevel) === "Empty" || validateInput(pilot) === "Empty" || validateInput(copilot) === "Empty" || validateInput(cargoLevel) === "Empty"){
             alert("Please complete all fields.");
@@ -59,7 +66,7 @@ function validateInput(testInput) {
             copilotStatus.innerHTML = `Copilot ${copilot} is ready for launch`;
             //both fail
             if((fuelLevel < 10000) && (cargoLevel > 10000)){
-               faultyItems.visible = visible;
+               list.style.visible = "visible";
                fuelStatus.innerHTML = "Fuel level too low for launch";
                cargoStatus.innerHTML = "Cargo mass too heavy for launch"; 
                document.launchStatus.innerHTML = "Shuttle Not Ready for Launch"; 
@@ -67,7 +74,7 @@ function validateInput(testInput) {
             }
             // 1st fail
             else if((fuelLevel < 10000) && (cargoLevel <= 10000)){
-                faultyItems.visible = visible;
+                list.style.visible = "visible";;
                 fuelStatus.innerHTML = "Fuel level too low for launch";
                 cargoStatus.innerHTML = "Cargo mass low enough for launch";
                 launchStatus.innerHTML = "Shuttle Not Ready for Launch"
@@ -75,7 +82,7 @@ function validateInput(testInput) {
             }
             //2nd fail
             else if((fuelLevel >=10000) && (cargoLevel > 10000)){
-                faultyItems.visible = visible;
+                list.style.visible = "visible";;
                 fuelStatus.innerHTML = "Fuel level high enough for launch";
                 cargoStatus.innerHTML = "Cargo mass too heavy for launch";
                 launchStatus.innerHTML = "Shuttle Not Ready for Launch"
@@ -83,7 +90,7 @@ function validateInput(testInput) {
             } 
             //both pass
             else if(fuelLevel >=10000 && cargoLevel <= 10000){
-                faultyItems.visible = hidden;
+                list.style.visible = "hidden";
                 fuelStatus.innerHTML = "Fuel level high enough for launch";
                 cargoStatus.innerHTML = "Cargo mass low enough for launch";
                 launchStatus.innerHTML = "Shuttle Is Ready for Launch"
@@ -99,8 +106,9 @@ async function myFetch() {
     planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then(function(response) {
         return response.json();
         });
-return planetsReturned;
-   
+    console.log(planetsReturned);    
+    return planetsReturned;
+
 }
 
 function pickPlanet(planets) {
