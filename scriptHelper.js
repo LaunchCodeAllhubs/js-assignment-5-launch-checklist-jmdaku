@@ -31,18 +31,19 @@ function validateInput(testInput) {
     
   function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         //list?
-        if(validateInput(fuelLevel || pilot || copilot || cargoLevel) === "Empty"){
+    form.addEventListener("submit", function(event){
+        if(validateInput(fuelLevel) === "Empty" || validateInput(pilot) === "Empty" || validateInput(copilot) === "Empty" || validateInput(cargoLevel) === "Empty"){
             alert("Please complete all fields.");
         }
-        else if(validateInput(fuelLevel || cargoLevel) === "Not a Number"){
+        else if((validateInput(fuelLevel) === "Not a Number") || (validateInput(cargoLevel) === "Not a Number")){
             alert("Please enter a number.");
         }
-        else if(validateInput(pilot || copilot)  === "Is a Number"){
+        else if((validateInput(pilot) === "Is a Number") || (validateInput(copilot) === "Is a Number")){
             alert("Please enter a name.");
         }
-        else if (validateInput(fuelLevel) === "Is a Number"){
+        else if ((validateInput(fuelLevel) === "Is a Number") && (validateInput(cargoLevel) === "Is a Number")){
             //both fail
-            if(fuelLevel < 10000 && cargoLevel > 10000){
+            if((fuelLevel < 10000) && (cargoLevel > 10000)){
                document.getElementById(faultyItems) = visible;
                fuelStatus.innerHTML = "Fuel level too low for launch";
                cargoLevel.innerHTML = "Cargo mass too heavy for launch"; 
@@ -50,7 +51,7 @@ function validateInput(testInput) {
                //document.getElementById(launchStatus) = color: #C7254E 
             }
             // 1st fail
-            else if(fuelLevel < 10000 && cargoLevel <= 10000){
+            else if((fuelLevel < 10000) && (cargoLevel <= 10000)){
                 document.getElementById(faultyItems) = visible;
                 fuelStatus.innerHTML = "Fuel level too low for launch";
                 cargoLevel.innerHTML = "Cargo mass low enough for launch";
@@ -58,7 +59,7 @@ function validateInput(testInput) {
                //document.getElementById(launchStatus) = color: #C7254E  
             }
             //2nd fail
-            else if(fuelLevel >=10000 && cargoLevel > 10000){
+            else if((fuelLevel >=10000) && (cargoLevel > 10000)){
                 document.getElementById(faultyItems) = visible;
                 fuelStatus.innerHTML = "Fuel level high enough for launch";
                 cargoLevel.innerHTML = "Cargo mass too heavy for launch";
@@ -74,16 +75,13 @@ function validateInput(testInput) {
                //document.getElementById(launchStatus) = color: #419F6A   
             }    
         } 
-     document.getElementById(pilotStatus) = `Pilot ${pilot} is ready for launch`;
-     document.getElementById(copilotStatus) = `Copilot ${copilot} is ready for launch`; 
-     };
+        document.getElementById(pilotStatus) = `Pilot ${pilot} is ready for launch`;
+        document.getElementById(copilotStatus) = `Copilot ${copilot} is ready for launch`;
+        event.preventDefault();    
+    });
+}    
 
-
-form.addEventListener("submit", function(event){
-    formSubmission()
-    event.preventDefault(); 
-});
-// Maybe not the right spot
+// Maybe not the right spot for EH
 
 
 async function myFetch() {

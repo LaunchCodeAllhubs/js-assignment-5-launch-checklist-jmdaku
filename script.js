@@ -14,3 +14,6 @@ window.addEventListener("load", function() {
    })
    
 });
+
+
+formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel);
