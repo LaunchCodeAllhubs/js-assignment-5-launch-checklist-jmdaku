@@ -3,7 +3,7 @@ require('isomorphic-fetch');
 
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
    // Here is the HTML formatting for our mission target div.
-      document.missionTarget.innerHTML = `
+        document.missionTarget.innerHTML = `
                 <h2>Mission Destination</h2>
                 <ol>
                     <li>Name: ${name}</li>
@@ -33,10 +33,10 @@ function validateInput(testInput) {
   function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         //list?
         let pilotStatus = document.getElementById(pilotStatus);
-        let copilotStatus =document.getElementById(copilotStatus);
+        let copilotStatus = document.getElementById(copilotStatus);
         let launchStatus = document.getElementById(launchStatus);
         let fuelStatus = document.getElementById(fuelStatus);
-        let cargoStatus = document.getElementById(argoStatus);
+        let cargoStatus = document.getElementById(cargoStatus);
         let faultyItems = document.getElementById(faultyItems);
     
         //any fields blank
@@ -96,10 +96,10 @@ function validateInput(testInput) {
 async function myFetch() {
     let planetsReturned;
 
-    planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response) {
+    planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then(function(response) {
         return response.json();
         });
-
+return planetsReturned;
    
 }
 
@@ -109,7 +109,6 @@ function pickPlanet(planets) {
 }
 
 //console.log tests
-//console.log(addDestinationInfo("document", "Earth", 3000, "Sol", 0, 1, "https://solarsystem.nasa.gov/system/resources/detail_files/16278_PIA20016.jpg"));
 console.log(validateInput(""));
 console.log(validateInput(100));
 console.log(validateInput("Ani"));
