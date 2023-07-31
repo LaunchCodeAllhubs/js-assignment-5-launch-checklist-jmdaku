@@ -15,6 +15,7 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
                 <img src="">
    */
 }
+//missionTarget
 
 function validateInput(testInput) {
     if(testInput === ""){
@@ -23,7 +24,7 @@ function validateInput(testInput) {
     else if(isNaN(testInput)){
         return "Not a Number";
     }
-    else if(!isNaN){
+    else if(!isNaN(Number(testInput))){
         return "Is a Number";
     }
 }
@@ -32,23 +33,29 @@ function validateInput(testInput) {
   function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         //list?
     form.addEventListener("submit", function(event){
+        //any fields blank
         if(validateInput(fuelLevel) === "Empty" || validateInput(pilot) === "Empty" || validateInput(copilot) === "Empty" || validateInput(cargoLevel) === "Empty"){
             alert("Please complete all fields.");
         }
+        //fuel & cargo amts are not numbers
         else if((validateInput(fuelLevel) === "Not a Number") || (validateInput(cargoLevel) === "Not a Number")){
             alert("Please enter a number.");
         }
+        //pilot names are numbers not strings
         else if((validateInput(pilot) === "Is a Number") || (validateInput(copilot) === "Is a Number")){
             alert("Please enter a name.");
         }
+        //rest passed and fuel & cargo amts are numbers
         else if ((validateInput(fuelLevel) === "Is a Number") && (validateInput(cargoLevel) === "Is a Number")){
+            let green = "#419F6A"; 
+            let red = "#C7254E";
             //both fail
             if((fuelLevel < 10000) && (cargoLevel > 10000)){
                document.getElementById(faultyItems) = visible;
                fuelStatus.innerHTML = "Fuel level too low for launch";
                cargoLevel.innerHTML = "Cargo mass too heavy for launch"; 
                document.getElementById(launchStatus) = "Shuttle Not Ready for Launch"; 
-               //document.getElementById(launchStatus) = color: #C7254E 
+               document.getElementById(launchStatus).style.color = red
             }
             // 1st fail
             else if((fuelLevel < 10000) && (cargoLevel <= 10000)){
@@ -56,7 +63,7 @@ function validateInput(testInput) {
                 fuelStatus.innerHTML = "Fuel level too low for launch";
                 cargoLevel.innerHTML = "Cargo mass low enough for launch";
                 document.getElementById(launchStatus) = "Shuttle Not Ready for Launch"
-               //document.getElementById(launchStatus) = color: #C7254E  
+                document.getElementById(launchStatus).style.color = red 
             }
             //2nd fail
             else if((fuelLevel >=10000) && (cargoLevel > 10000)){
@@ -64,7 +71,7 @@ function validateInput(testInput) {
                 fuelStatus.innerHTML = "Fuel level high enough for launch";
                 cargoLevel.innerHTML = "Cargo mass too heavy for launch";
                 document.getElementById(launchStatus) = "Shuttle Not Ready for Launch"
-               //document.getElementById(launchStatus) = color: #C7254E    
+                document.getElementById(launchStatus).style.color = red    
             } 
             //both pass
             else if(fuelLevel >=10000 && cargoLevel <= 10000){
@@ -72,7 +79,7 @@ function validateInput(testInput) {
                 fuelStatus.innerHTML = "Fuel level high enough for launch";
                 cargoLevel.innerHTML = "Cargo mass low enough for launch";
                 document.getElementById(launchStatus) = "Shuttle Is Ready for Launch"
-               //document.getElementById(launchStatus) = color: #419F6A   
+                document.getElementById(launchStatus).style.color = green  
             }    
         } 
         document.getElementById(pilotStatus) = `Pilot ${pilot} is ready for launch`;
@@ -94,8 +101,17 @@ async function myFetch() {
 }
 
 function pickPlanet(planets) {
-   return planets[(Math.random())*planets.length] 
+   let randomPlanet = planets[Math.floor((Math.random())*planets.length)]; 
+   return randomPlanet;
 }
+
+//console.log tests
+console.log(validateInput(""));
+console.log(validateInput(100));
+console.log(validateInput("Ani"));
+console.log(pickPlanet(["Earth", "Jupiter", "Mars", "Mercury", "Neptune", "Saturn", "Uranus", "Venus"]));
+//console.log()
+
 
 module.exports.addDestinationInfo = addDestinationInfo;
 module.exports.validateInput = validateInput;
