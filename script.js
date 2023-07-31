@@ -30,12 +30,11 @@ window.addEventListener("load", function() {
     });
 })
  
-let document = ""
 let list;
-let pilot = document.getElementById(pilotName);
-let copilot = document.getElementById(copilotName);
-let fuelLevel = document.getElementById(fuelLevel);
-let cargoLevel = document.getElementById(cargoLevel);
+let pilot = document.getElementById(pilotName).value;
+let copilot = document.getElementById(copilotName).value;
+let fuelLevel = document.getElementById(fuelLevel);value;
+let cargoLevel = document.getElementById(cargoLevel).value;
 
 
 form.addEventListener("submit", function(event){
