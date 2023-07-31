@@ -22,16 +22,20 @@ window.addEventListener("load", function() {
         let star = planet.star;
         let distance = planet.distance;
         let moons = planet.moons;
-        let image = planet.image;     
+        let imageUrl = planet.image;     
         
-        addDestinationInfo(document, name, diameter, star, distance, moons, image);
+        addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl);
        
         
     });
 })
  
-
-
+let document = ""
+let list;
+let pilot = document.getElementById(pilotName);
+let copilot = document.getElementById(copilotName);
+let fuelLevel = document.getElementById(fuelLevel);
+let cargoLevel = document.getElementById(cargoLevel);
 
 
 form.addEventListener("submit", function(event){
