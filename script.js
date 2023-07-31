@@ -26,4 +26,10 @@ window.addEventListener("load", function() {
 
 
 
-formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel);
+
+
+form.addEventListener("submit", function(event){
+    formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel);
+
+    event.preventDefault();
+});

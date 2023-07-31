@@ -21,7 +21,7 @@ function validateInput(testInput) {
     if(testInput === ""){
         return "Empty";    
     }
-    else if(isNaN(testInput)){
+    else if(isNaN(Number(testInput))){
         return "Not a Number";
     }
     else if(!isNaN(Number(testInput))){
@@ -32,7 +32,7 @@ function validateInput(testInput) {
     
   function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         //list?
-    form.addEventListener("submit", function(event){
+    
         //any fields blank
         if(validateInput(fuelLevel) === "Empty" || validateInput(pilot) === "Empty" || validateInput(copilot) === "Empty" || validateInput(cargoLevel) === "Empty"){
             alert("Please complete all fields.");
@@ -49,6 +49,8 @@ function validateInput(testInput) {
         else if ((validateInput(fuelLevel) === "Is a Number") && (validateInput(cargoLevel) === "Is a Number")){
             let green = "#419F6A"; 
             let red = "#C7254E";
+            document.getElementById(pilotStatus) = `Pilot ${pilot} is ready for launch`;
+            document.getElementById(copilotStatus) = `Copilot ${copilot} is ready for launch`;
             //both fail
             if((fuelLevel < 10000) && (cargoLevel > 10000)){
                document.getElementById(faultyItems) = visible;
@@ -81,14 +83,8 @@ function validateInput(testInput) {
                 document.getElementById(launchStatus) = "Shuttle Is Ready for Launch"
                 document.getElementById(launchStatus).style.color = green  
             }    
-        } 
-        document.getElementById(pilotStatus) = `Pilot ${pilot} is ready for launch`;
-        document.getElementById(copilotStatus) = `Copilot ${copilot} is ready for launch`;
-        event.preventDefault();    
-    });
+        }       
 }    
-
-// Maybe not the right spot for EH
 
 
 async function myFetch() {
