@@ -6,8 +6,7 @@ const { myFetch , addDestinationInfo } = require("./scriptHelper");
 
 window.addEventListener("load", function() {
 
-    debugger;
-
+   
     let listedPlanets;
     // Set listedPlanetsResponse equal to the value returned by calling myFetch()
     let listedPlanetsResponse = myFetch();
@@ -18,6 +17,7 @@ window.addEventListener("load", function() {
         console.log(listedPlanets);
             // Below this comment call the appropriate helper functions to pick a planet fom the list of planets and add that information to your destination.
         let planet = pickPlanet(listedPlanets);
+        console.log(planet);
         
         let name = planet.name;
         let diameter = planet.diameter;
@@ -31,10 +31,9 @@ window.addEventListener("load", function() {
     });
 
  
-let list;
 let pilot = document.getElementById(pilotName).value;
 let copilot = document.getElementById(copilotName).value;
-let fuelLevel = document.getElementById(fuelLevel);value;
+let fuelLevel = document.getElementById(fuelLevel).value;
 let cargoLevel = document.getElementById(cargoLevel).value;
 
 
