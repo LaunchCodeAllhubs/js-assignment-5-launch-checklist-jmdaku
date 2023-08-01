@@ -1,16 +1,13 @@
 // Write your JavaScript code here!
 
-const { myFetch , addDestinationInfo } = require("./scriptHelper");
-
-
+//const { myFetch } = require("./scriptHelper");
 
 window.addEventListener("load", function() {
-
    
     let listedPlanets;
     // Set listedPlanetsResponse equal to the value returned by calling myFetch()
     let listedPlanetsResponse = myFetch();
-    listedPlanetsResponse.then(function (result) {
+       listedPlanetsResponse.then(function(result) {
        listedPlanets = result;
        console.log(listedPlanets);
     }).then(function () {
@@ -27,20 +24,31 @@ window.addEventListener("load", function() {
         let imageUrl = planet.image;     
         
         addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl);
-           
+          
     });
 
  
-let pilot = document.getElementById(pilotName).value;
-let copilot = document.getElementById(copilotName).value;
-let fuelLevel = document.getElementById(fuelLevel).value;
-let cargoLevel = document.getElementById(cargoLevel).value;
-
-
-form.addEventListener("submit", function(event){
-    event.preventDefault();
-    formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel);
-
     
-});
-})
+
+    let form = document.getElementById("launchForm");
+
+    form.addEventListener("submit", function(event){
+    event.preventDefault();
+    let pilot = document.getElementById("pilotName").value;
+    let copilot = document.getElementsByName("copilotName").value;
+    let fuelLevel = document.getElementsByName("fuelLevel").value;
+    let cargoLevel = document.getElementsByName("cargoLevel").value;
+    let list = document.getElementById("faultyItems");
+    formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel);  
+    });
+
+  });
+
+
+
+
+
+// "formSubmission(") x
+// "myFetch(") inside x
+// "pickPlanet(") x
+// "addDestinatonInfo(") x
