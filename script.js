@@ -1,6 +1,6 @@
 // Write your JavaScript code here!
 
-//const { myFetch } = require("./scriptHelper");
+const { myFetch } = require("./scriptHelper");
 
 window.addEventListener("load", function() {
    
@@ -31,15 +31,15 @@ window.addEventListener("load", function() {
     let form = document.getElementById("launchForm");
 
     form.addEventListener("submit", function(event){
-    event.preventDefault();
-    let pilot = document.getElementById("pilotName").value;
-    let copilot = document.getElementsByName("copilotName").value;
-    let fuelLevel = document.getElementsByName("fuelLevel").value;
-    let cargoLevel = document.getElementsByName("cargoLevel").value;
-    let list = document.getElementById("faultyItems");
-    //let pilot = form.pilot.value;        
+         event.preventDefault();
+        //let pilot = document.getElementById("pilotName").value;
+        let copilot = document.getElementsByName("copilotName").value;
+        let fuelLevel = document.getElementsByName("fuelLevel").value;
+        let cargoLevel = document.getElementsByName("cargoMass").value;
+        let list = document.getElementById("faultyItems");
+        let pilot = document.querySelector("input[name=pilotName]");        
 
-    formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel);  
+        formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel);  
     });
 
   });

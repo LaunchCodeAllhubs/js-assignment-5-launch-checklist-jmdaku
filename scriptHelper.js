@@ -32,6 +32,11 @@ function validateInput(testInput) {
 
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
+    let pilot = document.getElementById("pilotName").value;
+    let copilot = document.getElementsByName("copilotName").value;
+    let fuelLevel = document.getElementsByName("fuelLevel").value;
+    let cargoLevel = document.getElementsByName("cargoMass").value;
+    let list = document.getElementById("faultyItems");
     let pilotStatus = document.getElementById("pilotStatus");
     let copilotStatus = document.getElementById("copilotStatus");
     let launchStatus = document.getElementById("launchStatus");
@@ -44,7 +49,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     if (validateInput(pilot) === "Empty"){
             alert("Please complete all fields.");
         }
-        else if((validateInput(pilot) === "Is a Number")){
+        else if(validateInput(pilot) === "Is a Number"){
             alert("Please enter a name."); 
         } else {
             pilotStatus.innerHTML = `Pilot ${pilot} is ready for launch`;    
@@ -54,17 +59,17 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     if (validateInput(copilot) === "Empty"){
         alert("Please complete all fields.");
         }
-        else if((validateInput(copilot) === "Is a Number")){
+        else if(validateInput(copilot) === "Is a Number"){
             alert("Please enter a name."); 
         } else {
             copilotStatus.innerHTML = `Pilot ${copilot} is ready for launch`;    
         }
 
     //fuel
-    if (validateInput(fuelLevel === "Empty")){
+    if (validateInput(fuelLevel) === "Empty"){
         alert("Please complete all fields.");
         }
-        else if((validateInput(fuelLevel) === "Not a Number")){
+        else if(validateInput(fuelLevel) === "Not a Number"){
             alert("Please enter a number."); 
         }
         else if(fuelLevel < 10000){
