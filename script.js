@@ -32,12 +32,12 @@ window.addEventListener("load", function() {
 
     form.addEventListener("submit", function(event){
          event.preventDefault();
-        //let pilot = document.getElementById("pilotName").value;
-        let copilot = document.getElementsByName("copilotName").value;
-        let fuelLevel = document.getElementsByName("fuelLevel").value;
-        let cargoLevel = document.getElementsByName("cargoMass").value;
+        let pilot = document.getElementById("pilotName").value;
+        let copilot = document.getElementsByName("copilotName")[0].value;
+        let fuelLevel = document.getElementsByName("fuelLevel")[0].value;
+        let cargoLevel = document.getElementsByName("cargoMass")[0].value;
         let list = document.getElementById("faultyItems");
-        let pilot = document.querySelector("input[name=pilotName]");        
+               
 
         formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel);  
     });
