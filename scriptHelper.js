@@ -46,8 +46,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         }
         else if((validateInput(pilot) === "Is a Number")){
             alert("Please enter a name."); 
-        }
-        else{
+        } else {
             pilotStatus.innerHTML = `Pilot ${pilot} is ready for launch`;    
         }
 
@@ -57,8 +56,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         }
         else if((validateInput(copilot) === "Is a Number")){
             alert("Please enter a name."); 
-        }
-        else{
+        } else {
             copilotStatus.innerHTML = `Pilot ${copilot} is ready for launch`;    
         }
 
@@ -73,13 +71,12 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
            list.style.visibility = "visible";
            fuelStatus.innerHTML = "Fuel level too low for launch";
            launchStatus.innerHTML = "Shuttle Not Ready for Launch"; 
-           launchStatus.style.color = red
-        }
-        else{
+           launchStatus.style.color = red;
+        } else {
             list.style.visibility = "hidden";
             fuelStatus.innerHTML = "Fuel level high enough for launch";
-            launchStatus.innerHTML = "Shuttle is Ready for Launch"
-            launchStatus.style.color = green  
+            launchStatus.innerHTML = "Shuttle is Ready for Launch";
+            launchStatus.style.color = green;  
         }  
         
     //cargo
@@ -93,21 +90,19 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
            list.style.visibility = "visible";
            cargoStatus.innerHTML = "Cargo mass too heavy for launch"; 
            launchStatus.innerHTML = "Shuttle Not Ready for Launch"; 
-           launchStatus.style.color = red
-        }
-        else{
+           launchStatus.style.color = red;
+        } else {
             list.style.visibility = "hidden";
             cargoStatus.innerHTML = "Cargo mass low enough for launch";
-            launchStatus.innerHTML = "Shuttle is Ready for Launch"
-            launchStatus.style.color = green  
+            launchStatus.innerHTML = "Shuttle is Ready for Launch";
+            launchStatus.style.color = green;  
         }       
  }  
 
  //let list = document.getElementById("faultyItems");
     
-    //checks first field vs if and then alerts or moves on.
-    //not checking all 4 fields
-    //need loop?
+    //still has alerts when all fields are correct
+    //faulty not updating
     //cargoMass vs cargoLevel
     //need to id field?
     //reread forms
