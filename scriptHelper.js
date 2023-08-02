@@ -83,10 +83,10 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     if (validateInput(cargoLevel) === "Empty"){
         alert("Please complete all fields.");
         }
-        else if(validateInput(cargoLevel) === "Not a Number"){
+        else if (validateInput(cargoLevel) === "Not a Number"){
             alert("Please enter a number."); 
         }
-        else if(cargoLevel > 10000){
+        else if (cargoLevel > 10000){
            list.style.visibility = "visible";
            cargoStatus.innerHTML = "Cargo mass too heavy for launch"; 
            launchStatus.innerHTML = "Shuttle Not Ready for Launch"; 
@@ -126,11 +126,11 @@ function pickPlanet(planets) {
 }
 
 //console.log tests
-console.log(validateInput(""));
-console.log(validateInput(100));
-console.log(validateInput("1000"));
-console.log(validateInput("Ani"));
-console.log(validateInput(Number("")));
+// console.log(validateInput(""));
+// console.log(validateInput(100));
+// console.log(validateInput("1000"));
+// console.log(validateInput("Ani"));
+// console.log(validateInput(Number("")));
 
 
 
