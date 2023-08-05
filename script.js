@@ -36,8 +36,7 @@ window.addEventListener("load", function() {
         let copilot = document.getElementsByName("copilotName")[0].value;
         let fuelLevel = document.getElementsByName("fuelLevel")[0].value;
         let cargoLevel = document.getElementsByName("cargoMass")[0].value;
-        let list = document.getElementById("faultyItems");
-               
+        let list = document.getElementById("faultyItems");     
 
         formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel);  
     });
